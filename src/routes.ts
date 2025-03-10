@@ -1,10 +1,11 @@
+import Accordions from "./components/accotdion";
 import Test1 from "./components/test1";
 import Test2_react from "./components/test2/react";
 import Test2_vanilla from "./components/test2/vanilla";
 
 const routePaths = [
   "/",
-  "/test1",
+  "/accotdion",
   "/test2",
   "/test2/vanilla",
   "/test2/react",
@@ -30,13 +31,13 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: "/",
     link: "/",
     name: "root",
-    children: ["/test1", "/test2"],
+    children: ["/accotdion", "/test2"],
   },
-  "/test1": {
-    key: "/test1",
-    link: "/test1",
-    name: "테스트1",
-    children: Test1,
+  "/accotdion": {
+    key: "/accotdion",
+    link: "/accotdion",
+    name: "아코디언",
+    children: Accordions,
   },
   "/test2": {
     key: "/test2",
