@@ -51,9 +51,9 @@ const initiator = (wrapper: HTMLDivElement) => {
 
   const $items = data.map(itemBuilder);
   $ul.append(...$items);
+  ($items[0].children[0] as HTMLElement).click();
 
   wrapper.append($ul);
-  ($items[0].children[0] as HTMLElement).click();
 };
 
 const Accordions4V = () => <VanillaWrapper title="#4" initiator={initiator} />;
