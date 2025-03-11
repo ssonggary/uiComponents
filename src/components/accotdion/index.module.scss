@@ -61,4 +61,34 @@
       }
     }
   }
+
+  .item5 {
+    overflow: hidden;
+    .input {
+      display: none;
+    }
+    .tab {
+      display: block;
+    }
+    .description {
+      padding: 0 15px;
+      border-bottom-width: 0;
+      max-height: 0;
+      transition: all 0.5s ease-in-out;
+    }
+    .input:checked + .tab {
+      background-color: #ace;
+
+      &::before {
+        content: "-";
+      }
+    }
+
+    .input:checked ~ .description {
+      padding: 15px;
+      border-bottom: 1px solid #ccc;
+      background-color: #eff;
+      max-height: 100vh; /* ✅ 높이 변경 */
+    }
+  }
 }

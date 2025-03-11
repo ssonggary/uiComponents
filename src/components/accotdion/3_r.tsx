@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import cx from "./cx";
 import data from "./data";
 
@@ -15,12 +15,31 @@ const AccordionItem = ({
   current: boolean;
   toggle: () => void;
 }) => {
+  const descRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (descRef.current) {
+      descRef.current.addEventListener("beforematch", toggle);
+    }
+
+    return () => {
+      if (descRef.current) {
+        descRef.current.removeEventListener("beforematch", toggle);
+      }
+    };
+  }, [toggle]);
   return (
     <li className={cx("item", "item3", { current })} key={id}>
       <div className={cx("tab")} onClick={toggle}>
         {title}
       </div>
-      <div className={cx("description")}>{description}</div>
+      <div
+        className={cx("description")}
+        ref={descRef}
+        HIDDEN={current ? undefined : "until-found"}
+      >
+        {description}
+      </div>
     </li>
   );
 };
